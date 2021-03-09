@@ -22,7 +22,7 @@
 </template>
 
 <script>
-    import AdminNavbar from '@/components/Backend/Navbar'
+    import AdminNavbar from '@/Components/Backend/Navbar'
     import AdminSidebar from '@/Components/Backend/AdminSidebar'
 
     export default {

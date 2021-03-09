@@ -10,12 +10,13 @@
 
         <div class="p-5">
             <div class="mb-5 w-full">
-                <textarea 
+                <!-- <textarea 
                     rows="3" 
                     class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" 
                     placeholder="Question"
                     v-model="form.question"
-                ></textarea>
+                ></textarea> -->
+                <question-editor :content.sync="form.question"></question-editor>
                 <jet-input-error :message="form.errors.question"  class="mt-2" />
             </div>
             
@@ -89,12 +90,14 @@
 </template>
 
 <script>
+    import QuestionEditor from '@/Components/Shared/Editor'
     import JetInputError from '@/Components/Shared/FormElement/InputError'
     import JetButton from '@/Components/Shared/Button/Button'
     import JetDangerButton from '@/Components/Shared/Button/DangerButton'
 
     export default {
         components: {
+            QuestionEditor,
             JetInputError,
             JetButton,
             JetDangerButton,

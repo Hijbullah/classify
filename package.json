@@ -28,6 +28,7 @@
         "vue-loader": "^15.9.6",
         "vue-select": "^3.11.2",
         "vue-template-compiler": "^2.6.12",
+        "vue2-editor": "^2.10.2",
         "weekstart": "^1.0.1"
     }
 }

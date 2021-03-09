@@ -22,7 +22,7 @@
 </template>
 
 <script>
-    import TeacherNavbar from '@/components/Backend/Navbar'
+    import TeacherNavbar from '@/Components/Backend/Navbar'
     import TeacherSidebar from '@/Components/Backend/TeacherSidebar'
 
     export default {
