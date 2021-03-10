@@ -2,26 +2,26 @@
     <div>
         <div class="relative p-5 bg-white shadow-sm">
             <p class="absolute left-2 top-2 text-xs font-semibold uppercase tracking-wider bg-green-400 text-white rounded-full px-2 py-1 leading-none">{{ question.subject.name }}</p>
-            <div class="flex items-center mt-3 mb-2">
+            <div class="flex mt-3 mb-2">
                 <span class="font-bold">{{ serial }}.</span>
-                <h3 class="ml-4 font-bold">{{ question.question }}</h3>
+                <h3 class="ml-4" v-html="question.question"></h3>
             </div>
             <div class="pl-8 space-y-2">
                 <div class="flex items-center">
                     <input :checked="question.answer == 'a'" disabled type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
-                    <p class="ml-4">{{ question.options['a'] }}</p>
+                    <div class="ml-4" v-html="question.options['a']"></div>
                 </div>
                 <div class="flex items-center">
                     <input :checked="question.answer == 'b'" disabled type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
-                    <p class="ml-4">{{ question.options['b'] }}</p>
+                    <div class="ml-4" v-html="question.options['b']"></div>
                 </div>
                 <div class="flex items-center">
                     <input :checked="question.answer == 'c'" disabled type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
-                    <p class="ml-4">{{ question.options['c'] }}</p>
+                    <div class="ml-4" v-html="question.options['c']"></div>
                 </div>
                 <div class="flex items-center">
                     <input :checked="question.answer == 'd'" disabled type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
-                    <p class="ml-4">{{ question.options['d'] }}</p>
+                    <div class="ml-4" v-html="question.options['d']"></div>
                 </div>
             </div>
             <div v-if="examStatus === 'pending'" class="absolute right-0 top-0 mt-4 mr-3">

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\BatchController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\SubjectController;
+use App\Http\Controllers\ImageUploaderController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\LiveClassController;
@@ -87,6 +88,8 @@ Route::middleware(['auth', 'verified'])->group(function() {
     Route::post('/live-class-update/{classId}', [LiveClassController::class, 'updateLiveClass'])->name('class.live.update');
     Route::post('/live-class-end/{classId}', [LiveClassController::class, 'endLiveClass'])->name('class.live.end');
 
+    // image uploader
+    Route::post('images/upload', [ImageUploaderController::class, 'uploadImage'])->name('images.upload');
 }); 
 
 

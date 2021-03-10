@@ -173,14 +173,15 @@ var render = function() {
         [_vm._v(_vm._s(_vm.question.subject.name))]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "flex items-center mt-3 mb-2" }, [
+      _c("div", { staticClass: "flex mt-3 mb-2" }, [
         _c("span", { staticClass: "font-bold" }, [
           _vm._v(_vm._s(_vm.serial) + ".")
         ]),
         _vm._v(" "),
-        _c("h3", { staticClass: "ml-4 font-bold" }, [
-          _vm._v(_vm._s(_vm.question.question))
-        ])
+        _c("h3", {
+          staticClass: "ml-4",
+          domProps: { innerHTML: _vm._s(_vm.question.question) }
+        })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "pl-8 space-y-2" }, [
@@ -192,9 +193,10 @@ var render = function() {
             domProps: { checked: _vm.question.answer == "a" }
           }),
           _vm._v(" "),
-          _c("p", { staticClass: "ml-4" }, [
-            _vm._v(_vm._s(_vm.question.options["a"]))
-          ])
+          _c("div", {
+            staticClass: "ml-4",
+            domProps: { innerHTML: _vm._s(_vm.question.options["a"]) }
+          })
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "flex items-center" }, [
@@ -205,9 +207,10 @@ var render = function() {
             domProps: { checked: _vm.question.answer == "b" }
           }),
           _vm._v(" "),
-          _c("p", { staticClass: "ml-4" }, [
-            _vm._v(_vm._s(_vm.question.options["b"]))
-          ])
+          _c("div", {
+            staticClass: "ml-4",
+            domProps: { innerHTML: _vm._s(_vm.question.options["b"]) }
+          })
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "flex items-center" }, [
@@ -218,9 +221,10 @@ var render = function() {
             domProps: { checked: _vm.question.answer == "c" }
           }),
           _vm._v(" "),
-          _c("p", { staticClass: "ml-4" }, [
-            _vm._v(_vm._s(_vm.question.options["c"]))
-          ])
+          _c("div", {
+            staticClass: "ml-4",
+            domProps: { innerHTML: _vm._s(_vm.question.options["c"]) }
+          })
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "flex items-center" }, [
@@ -231,9 +235,10 @@ var render = function() {
             domProps: { checked: _vm.question.answer == "d" }
           }),
           _vm._v(" "),
-          _c("p", { staticClass: "ml-4" }, [
-            _vm._v(_vm._s(_vm.question.options["d"]))
-          ])
+          _c("div", {
+            staticClass: "ml-4",
+            domProps: { innerHTML: _vm._s(_vm.question.options["d"]) }
+          })
         ])
       ]),
       _vm._v(" "),
