@@ -56,12 +56,12 @@
 
 <script>
     import StudentLayout from '@/Layouts/StudentLayout'
-    import AppPagination from '@/Components/Shared/Pagination'
+    import Pagination from '@/Components/Shared/Pagination'
 
     export default {
         components: {
             StudentLayout,
-            AppPagination
+            Pagination
         },
         props: {
             results: Object

@@ -62,6 +62,7 @@
                                 </inertia-link>
 
                                 <inertia-link 
+                                    v-if="exam.status == 'pending'"
                                     :href="route('admin.exams.edit', exam.exam_code)" 
                                     title="Edit"
                                     class="inline-flex text-gray-800 hover:text-gray-500 focus:outline-none"

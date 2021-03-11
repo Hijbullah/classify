@@ -17,15 +17,18 @@
                         />
                     </div>
                     <div v-if="!isExamFinish">
-                        <div>
-                            <p class="text-xl font-bold"><span>{{ currenQuestion.serial }}.</span> {{ currenQuestion.question }}</p>
-                            <div class="mt-3 pl-8 space-y-1">
-                                <div v-for="(option, key, index) in currenQuestion.options" :key="index" class="flex items-center">
-                                    <input v-model="selectedOption" :value="key" type="radio" class="h-4 w-4 text-indigo-600 transition duration-150 ease-in-out cursor-pointer">
-                                    <p class="ml-2">{{ key }})<p>
-                                    <p class="ml-2">
-                                        {{ option }}
-                                    </p>
+                        <div class="ql-editor">
+                            <div class="flex">
+                                <p class="mr-4 text-xl font-bold">{{ currenQuestion.serial }}.</p>
+                                <div v-html="currenQuestion.question"></div>
+                            </div>
+                            <div class="mt-3 pl-8 space-y-3">
+                                <div v-for="(option, key, index) in currenQuestion.options" :key="index" class="flex items-start">
+                                    <div class="flex items-center">
+                                        <input v-model="selectedOption" :value="key" type="radio" class="h-4 w-4 text-indigo-600 transition duration-150 ease-in-out cursor-pointer">
+                                        <span class="ml-2">{{ key }})</span>
+                                    </div>
+                                    <div v-html="option" class="ml-3"></div>
                                 </div>
                             </div>
                         </div>
@@ -78,6 +81,9 @@
 <script>
     import StudentLayout from '@/Layouts/StudentLayout'
     import TheTimer from './TheTimer'
+    import 'katex/dist/katex.min.css'
+    // import 'vue2-editor/dist/vue2-editor.css'
+
 
     export default {
         components: {
@@ -85,6 +91,7 @@
             TheTimer
         },
         props: {
+            result_code: String,
             exam: Object,
             questions: Array
         },
@@ -101,6 +108,7 @@
                 laterQuestions: [],
                 currenQuestion: [],
                 form: this.$inertia.form({
+                    result_code: this.result_code,
                     answerSheet: [],
                 })
             }

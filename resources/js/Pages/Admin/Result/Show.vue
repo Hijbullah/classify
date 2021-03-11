@@ -5,7 +5,6 @@
 
             <div class="mt-5">
                 <div class="mb-6 flex justify-end items-center space-x-2">
-                    <p v-if="isExamClosed" class="text-xl font-bold">Exam is Closed</p>
                     <inertia-link 
                         :href="route('admin.questions.index', exam.exam_code)" 
                         class="btn-main px-3 py-2 text-sm font-semibold uppercase tracking-widest"
@@ -19,7 +18,7 @@
                         Results
                     </inertia-link>
                     <inertia-link 
-                        v-if="exam.status === 'pending'"
+                        v-if="!isExamPublished"
                         :href="route('admin.exams.edit', exam.exam_code)" 
                         class="btn-main px-3 py-2 text-sm font-semibold uppercase tracking-widest"
                     >
@@ -81,7 +80,7 @@
                             <h2 class="text-sm font-bold uppercase tracking-wider">Exam Status</h2>
                             <p class="text-sm font-bold uppercase tracking-widest">{{ exam.status }}</p>
                         </div>
-                        <div v-if="!isExamClosed" class="mt-4">
+                        <div class="mt-4">
                             <p v-if="!hasEnoughQuestions" class="mb-3 text-sm font-light text-red-500 leading-tight">Warning: You have not added enough questions for this exam. Add Question before publish exam.</p>
                             <p v-else class="mb-3 text-sm font-light text-green-500 leading-tight">Exam can be published now!</p>
                             <p v-if="isExamPublished" class="mb-3 text-sm">Exam can't be edited when it is published.</p>
@@ -134,9 +133,6 @@
             },
             isExamPublished() {
                 return this.exam.status === 'published';
-            },
-            isExamClosed() {
-                return this.exam.status === 'closed';
             }
         },
         methods: {

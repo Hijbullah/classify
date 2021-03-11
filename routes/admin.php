@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\LiveClassController;
 use App\Http\Controllers\Teacher\ProfileController;
 use App\Http\Controllers\Admin\ExamCategoryController;
+use App\Http\Controllers\Admin\ResultController;
 use App\Http\Controllers\Teacher\ClassScheduleController;
 
 /*
@@ -62,11 +63,16 @@ Route::middleware(['auth', 'verified'])->group(function() {
         Route::get('/exams/{exam:exam_code}/questions/create/{type}', [QuestionController::class, 'create'])
                 ->where('type', 'form|file')
                 ->name('questions.create');
+
         Route::post('/questions/form', [QuestionController::class, 'store'])->name('questions.store.form');
-        Route::get('/exam/{exam:exam_code}/questions/{question}/edit', [QuestionController::class, 'edit'])->name('questions.edit');
+        Route::get('/exams/{exam:exam_code}/questions/{question}/edit', [QuestionController::class, 'edit'])->name('questions.edit');
         Route::put('/questions/{question}', [QuestionController::class, 'update'])->name('questions.update');
         Route::delete('/questions/{question}', [QuestionController::class, 'destroy'])->name('questions.destroy');
-   
+        
+        // results
+        Route::get('exams/{exam:exam_code}/results', [ResultController::class, 'showExamResults'])->name('exams.results');
+        Route::put('exams/{exam:exam_code}/publish-result', [ResultController::class, 'publishResults'])->name('exams.publish-results');
+
     });
 
     Route::prefix('teachers')->name('teachers.')->middleware('teacher')->group(function() {

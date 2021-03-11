@@ -480,7 +480,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     StudentLayout: _Layouts_StudentLayout__WEBPACK_IMPORTED_MODULE_0__.default,
-    AppPagination: _Components_Shared_Pagination__WEBPACK_IMPORTED_MODULE_1__.default
+    Pagination: _Components_Shared_Pagination__WEBPACK_IMPORTED_MODULE_1__.default
   },
   props: {
     results: Object

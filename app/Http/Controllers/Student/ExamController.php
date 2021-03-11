@@ -6,6 +6,7 @@ use App\Models\Exam;
 use Inertia\Inertia;
 use App\Models\Result;
 use App\Models\Student;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -73,14 +74,15 @@ class ExamController extends Controller
         }
 
         //create the initial result data
-        Result::create([
-            'result_code' => $exam->exam_code,
+        $result = Result::create([
+            'result_code' => (string) Str::uuid(),
             'user_id' => Auth::id(),
             'exam_id' => $exam->id,
 
         ]);
         
         return Inertia::render('Student/Exam/TakeExam', [
+            'result_code' => $result->result_code,
             'exam' => [
                 'id' => $exam->id,
                 'exam_code' => $exam->exam_code,
@@ -161,7 +163,7 @@ class ExamController extends Controller
         $totalMark = $correctAnswer - $negativeMark;
 
         // storing result
-        $result = Result::where('exam_id', $exam->id)->first();
+        $result = Result::where('result_code', $request->result_code)->firstOrFail();
         $result->exam_category = $exam->category()->select('id', 'name')->first()->name;
         $result->exam_name = $exam->name;
         $result->total_question = $exam->total_question;
