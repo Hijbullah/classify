@@ -570,6 +570,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -584,6 +585,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     isExamPublished: function isExamPublished() {
       return this.exam.status === 'published';
+    },
+    isExamClosed: function isExamClosed() {
+      return this.exam.status === 'closed';
     }
   },
   methods: {
@@ -1415,42 +1419,6 @@ var render = function() {
                   ])
                 },
                 [_vm._v("\n\n                Exams\n            ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "sidebar-nav-link",
-                {
-                  attrs: {
-                    href: _vm.route("admin.users.index"),
-                    active: _vm.route().current("admin.users.*")
-                  },
-                  scopedSlots: _vm._u([
-                    {
-                      key: "icon",
-                      fn: function() {
-                        return [
-                          _c(
-                            "svg",
-                            {
-                              staticClass: "h-6 w-6 fill-current mr-2",
-                              attrs: { viewBox: "0 0 20 20" }
-                            },
-                            [
-                              _c("path", {
-                                attrs: {
-                                  d:
-                                    "M6.176,7.241V6.78c0-0.221-0.181-0.402-0.402-0.402c-0.221,0-0.403,0.181-0.403,0.402v0.461C4.79,7.416,4.365,7.955,4.365,8.591c0,0.636,0.424,1.175,1.006,1.35v3.278c0,0.222,0.182,0.402,0.403,0.402c0.222,0,0.402-0.181,0.402-0.402V9.941c0.582-0.175,1.006-0.714,1.006-1.35C7.183,7.955,6.758,7.416,6.176,7.241 M5.774,9.195c-0.332,0-0.604-0.272-0.604-0.604c0-0.332,0.272-0.604,0.604-0.604c0.332,0,0.604,0.272,0.604,0.604C6.377,8.923,6.105,9.195,5.774,9.195 M10.402,10.058V6.78c0-0.221-0.181-0.402-0.402-0.402c-0.222,0-0.402,0.181-0.402,0.402v3.278c-0.582,0.175-1.006,0.714-1.006,1.35c0,0.637,0.424,1.175,1.006,1.351v0.461c0,0.222,0.181,0.402,0.402,0.402c0.221,0,0.402-0.181,0.402-0.402v-0.461c0.582-0.176,1.006-0.714,1.006-1.351C11.408,10.772,10.984,10.233,10.402,10.058M10,12.013c-0.333,0-0.604-0.272-0.604-0.604S9.667,10.805,10,10.805c0.332,0,0.604,0.271,0.604,0.604S10.332,12.013,10,12.013M14.629,8.448V6.78c0-0.221-0.182-0.402-0.403-0.402c-0.221,0-0.402,0.181-0.402,0.402v1.668c-0.581,0.175-1.006,0.714-1.006,1.35c0,0.636,0.425,1.176,1.006,1.351v2.07c0,0.222,0.182,0.402,0.402,0.402c0.222,0,0.403-0.181,0.403-0.402v-2.07c0.581-0.175,1.006-0.715,1.006-1.351C15.635,9.163,15.21,8.624,14.629,8.448 M14.226,10.402c-0.331,0-0.604-0.272-0.604-0.604c0-0.332,0.272-0.604,0.604-0.604c0.332,0,0.604,0.272,0.604,0.604C14.83,10.13,14.558,10.402,14.226,10.402 M17.647,3.962H2.353c-0.221,0-0.402,0.181-0.402,0.402v11.27c0,0.222,0.181,0.402,0.402,0.402h15.295c0.222,0,0.402-0.181,0.402-0.402V4.365C18.05,4.144,17.869,3.962,17.647,3.962 M17.245,15.232H2.755V4.768h14.49V15.232z"
-                                }
-                              })
-                            ]
-                          )
-                        ]
-                      },
-                      proxy: true
-                    }
-                  ])
-                },
-                [_vm._v("\n\n                Results\n            ")]
               )
             ],
             1
@@ -2064,6 +2032,12 @@ var render = function() {
           "div",
           { staticClass: "mb-6 flex justify-end items-center space-x-2" },
           [
+            _vm.isExamClosed
+              ? _c("p", { staticClass: "text-xl font-bold" }, [
+                  _vm._v("Exam is Closed")
+                ])
+              : _vm._e(),
+            _vm._v(" "),
             _c(
               "inertia-link",
               {
@@ -2088,7 +2062,7 @@ var render = function() {
               [_vm._v("\n                    Results\n                ")]
             ),
             _vm._v(" "),
-            !_vm.isExamPublished
+            _vm.exam.status === "pending"
               ? _c(
                   "inertia-link",
                   {
@@ -2267,101 +2241,103 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "mt-4" },
-              [
-                !_vm.hasEnoughQuestions
-                  ? _c(
-                      "p",
-                      {
-                        staticClass:
-                          "mb-3 text-sm font-light text-red-500 leading-tight"
-                      },
-                      [
-                        _vm._v(
-                          "Warning: You have not added enough questions for this exam. Add Question before publish exam."
+            !_vm.isExamClosed
+              ? _c(
+                  "div",
+                  { staticClass: "mt-4" },
+                  [
+                    !_vm.hasEnoughQuestions
+                      ? _c(
+                          "p",
+                          {
+                            staticClass:
+                              "mb-3 text-sm font-light text-red-500 leading-tight"
+                          },
+                          [
+                            _vm._v(
+                              "Warning: You have not added enough questions for this exam. Add Question before publish exam."
+                            )
+                          ]
                         )
-                      ]
-                    )
-                  : _c(
-                      "p",
-                      {
-                        staticClass:
-                          "mb-3 text-sm font-light text-green-500 leading-tight"
-                      },
-                      [_vm._v("Exam can be published now!")]
-                    ),
-                _vm._v(" "),
-                _vm.isExamPublished
-                  ? _c("p", { staticClass: "mb-3 text-sm" }, [
-                      _vm._v("Exam can't be edited when it is published.")
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                !_vm.hasEnoughQuestions
-                  ? _c(
-                      "inertia-link",
-                      {
-                        staticClass:
-                          "btn-main mr-2 px-3 py-2 text-xs font-semibold uppercase tracking-widest",
-                        attrs: {
-                          href: _vm.route(
-                            "admin.questions.index",
-                            _vm.exam.exam_code
-                          )
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                            Add Questions\n                        "
+                      : _c(
+                          "p",
+                          {
+                            staticClass:
+                              "mb-3 text-sm font-light text-green-500 leading-tight"
+                          },
+                          [_vm._v("Exam can be published now!")]
+                        ),
+                    _vm._v(" "),
+                    _vm.isExamPublished
+                      ? _c("p", { staticClass: "mb-3 text-sm" }, [
+                          _vm._v("Exam can't be edited when it is published.")
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    !_vm.hasEnoughQuestions
+                      ? _c(
+                          "inertia-link",
+                          {
+                            staticClass:
+                              "btn-main mr-2 px-3 py-2 text-xs font-semibold uppercase tracking-widest",
+                            attrs: {
+                              href: _vm.route(
+                                "admin.questions.index",
+                                _vm.exam.exam_code
+                              )
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            Add Questions\n                        "
+                            )
+                          ]
                         )
-                      ]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                !_vm.isExamPublished
-                  ? _c(
-                      "button",
-                      {
-                        staticClass:
-                          "btn-main px-3 py-2 text-xs font-semibold uppercase tracking-widest disabled:opacity-50",
-                        attrs: { disabled: !_vm.hasEnoughQuestions },
-                        on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            return _vm.toogleExamPublication($event)
-                          }
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                            Publish\n                        "
+                      : _vm._e(),
+                    _vm._v(" "),
+                    !_vm.isExamPublished
+                      ? _c(
+                          "button",
+                          {
+                            staticClass:
+                              "btn-main px-3 py-2 text-xs font-semibold uppercase tracking-widest disabled:opacity-50",
+                            attrs: { disabled: !_vm.hasEnoughQuestions },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.toogleExamPublication($event)
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            Publish\n                        "
+                            )
+                          ]
                         )
-                      ]
-                    )
-                  : _c(
-                      "button",
-                      {
-                        staticClass:
-                          "btn-main px-3 py-2 bg-red-500 text-white text-xs font-semibold uppercase tracking-widest hover:bg-red-400 disabled:opacity-50",
-                        attrs: { disabled: !_vm.hasEnoughQuestions },
-                        on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            return _vm.toogleExamPublication($event)
-                          }
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                            UnPublish\n                        "
+                      : _c(
+                          "button",
+                          {
+                            staticClass:
+                              "btn-main px-3 py-2 bg-red-500 text-white text-xs font-semibold uppercase tracking-widest hover:bg-red-400 disabled:opacity-50",
+                            attrs: { disabled: !_vm.hasEnoughQuestions },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.toogleExamPublication($event)
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            UnPublish\n                        "
+                            )
+                          ]
                         )
-                      ]
-                    )
-              ],
-              1
-            )
+                  ],
+                  1
+                )
+              : _vm._e()
           ])
         ])
       ])

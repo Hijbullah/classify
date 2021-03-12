@@ -1,4 +1,4 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Pages_Admin_Exam_copy_Index_vue"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Pages_Admin_LectureSheet_Index_vue"],{
 
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Components/Backend/AdminSidebar.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************************************************************!*\
@@ -502,10 +502,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Admin/Exam copy/Index.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Admin/Exam copy/Index.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Admin/LectureSheet/Index.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Admin/LectureSheet/Index.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -602,20 +602,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -626,7 +612,7 @@ __webpack_require__.r(__webpack_exports__);
     SearchFilter: _Components_Shared_SearchFilter__WEBPACK_IMPORTED_MODULE_2__.default
   },
   props: {
-    exams: Object,
+    lectureSheets: Object,
     filters: Object
   },
   data: function data() {
@@ -641,7 +627,7 @@ __webpack_require__.r(__webpack_exports__);
       handler: _.throttle(function () {
         var query = _.pickBy(this.form);
 
-        this.$inertia.replace(route('admin.exams.index', Object.keys(query).length ? query : {
+        this.$inertia.replace(route('admin.lecture-sheets.index', Object.keys(query).length ? query : {
           remember: 'forget'
         }));
       }, 150),
@@ -978,10 +964,10 @@ component.options.__file = "resources/js/Layouts/AdminLayout.vue"
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Admin/Exam copy/Index.vue":
-/*!******************************************************!*\
-  !*** ./resources/js/Pages/Admin/Exam copy/Index.vue ***!
-  \******************************************************/
+/***/ "./resources/js/Pages/Admin/LectureSheet/Index.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/Pages/Admin/LectureSheet/Index.vue ***!
+  \*********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -989,8 +975,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Index_vue_vue_type_template_id_98516200___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Index.vue?vue&type=template&id=98516200& */ "./resources/js/Pages/Admin/Exam copy/Index.vue?vue&type=template&id=98516200&");
-/* harmony import */ var _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Index.vue?vue&type=script&lang=js& */ "./resources/js/Pages/Admin/Exam copy/Index.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Index_vue_vue_type_template_id_519b0d2d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Index.vue?vue&type=template&id=519b0d2d& */ "./resources/js/Pages/Admin/LectureSheet/Index.vue?vue&type=template&id=519b0d2d&");
+/* harmony import */ var _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Index.vue?vue&type=script&lang=js& */ "./resources/js/Pages/Admin/LectureSheet/Index.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -1001,8 +987,8 @@ __webpack_require__.r(__webpack_exports__);
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
   _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _Index_vue_vue_type_template_id_98516200___WEBPACK_IMPORTED_MODULE_0__.render,
-  _Index_vue_vue_type_template_id_98516200___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _Index_vue_vue_type_template_id_519b0d2d___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Index_vue_vue_type_template_id_519b0d2d___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -1012,7 +998,7 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/Pages/Admin/Exam copy/Index.vue"
+component.options.__file = "resources/js/Pages/Admin/LectureSheet/Index.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -1145,10 +1131,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Admin/Exam copy/Index.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/Pages/Admin/Exam copy/Index.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************/
+/***/ "./resources/js/Pages/Admin/LectureSheet/Index.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/Pages/Admin/LectureSheet/Index.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1156,7 +1142,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Admin/Exam copy/Index.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Admin/LectureSheet/Index.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
@@ -1297,19 +1283,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Admin/Exam copy/Index.vue?vue&type=template&id=98516200&":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/Pages/Admin/Exam copy/Index.vue?vue&type=template&id=98516200& ***!
-  \*************************************************************************************/
+/***/ "./resources/js/Pages/Admin/LectureSheet/Index.vue?vue&type=template&id=519b0d2d&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/Pages/Admin/LectureSheet/Index.vue?vue&type=template&id=519b0d2d& ***!
+  \****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_98516200___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_98516200___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_519b0d2d___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_519b0d2d___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_98516200___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Index.vue?vue&type=template&id=98516200& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Admin/Exam copy/Index.vue?vue&type=template&id=98516200&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_519b0d2d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Index.vue?vue&type=template&id=519b0d2d& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Admin/LectureSheet/Index.vue?vue&type=template&id=519b0d2d&");
 
 
 /***/ }),
@@ -2320,10 +2306,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Admin/Exam copy/Index.vue?vue&type=template&id=98516200&":
-/*!****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Admin/Exam copy/Index.vue?vue&type=template&id=98516200& ***!
-  \****************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Admin/LectureSheet/Index.vue?vue&type=template&id=519b0d2d&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Admin/LectureSheet/Index.vue?vue&type=template&id=519b0d2d& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2344,7 +2330,7 @@ var render = function() {
           staticClass:
             "text-xl text-gray-900 font-semibold border-b-2 border-gray-900"
         },
-        [_vm._v("All exams")]
+        [_vm._v("All Lecture Sheets")]
       ),
       _vm._v(" "),
       _c(
@@ -2375,7 +2361,7 @@ var render = function() {
                     {
                       staticClass:
                         "btn-main px-3 py-2 text-sm font-semibold uppercase tracking-widest",
-                      attrs: { href: _vm.route("admin.exams.create") }
+                      attrs: { href: _vm.route("admin.lecture-sheets.create") }
                     },
                     [
                       _vm._v(
@@ -2400,37 +2386,19 @@ var render = function() {
                 [
                   _c("tr", { staticClass: "text-left" }, [
                     _c("th", { staticClass: "px-6 pt-4 pb-4 font-normal" }, [
-                      _vm._v("Name")
+                      _vm._v("Title")
                     ]),
                     _vm._v(" "),
                     _c(
                       "th",
                       { staticClass: "px-6 pt-4 pb-4 font-normal text-center" },
-                      [_vm._v("Batch")]
+                      [_vm._v("Course")]
                     ),
                     _vm._v(" "),
                     _c(
                       "th",
                       { staticClass: "px-6 pt-4 pb-4 font-normal text-center" },
-                      [_vm._v("Category")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "th",
-                      { staticClass: "px-6 pt-4 pb-4 font-normal text-center" },
-                      [_vm._v("Schedule")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "th",
-                      { staticClass: "px-6 pt-4 pb-4 font-normal text-center" },
-                      [_vm._v("Questions")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "th",
-                      { staticClass: "px-6 pt-4 pb-4 font-normal text-center" },
-                      [_vm._v("Status")]
+                      [_vm._v("Subject")]
                     ),
                     _vm._v(" "),
                     _c(
@@ -2440,11 +2408,11 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._l(_vm.exams.data, function(exam) {
+                  _vm._l(_vm.lectureSheets.data, function(lectureSheet) {
                     return _c(
                       "tr",
                       {
-                        key: exam.id,
+                        key: lectureSheet.id,
                         staticClass:
                           "hover:bg-gray-100 focus-within:bg-gray-100"
                       },
@@ -2452,7 +2420,7 @@ var render = function() {
                         _c("td", { staticClass: "border-t px-6 py-2" }, [
                           _vm._v(
                             "\n                            " +
-                              _vm._s(exam.name) +
+                              _vm._s(lectureSheet.title) +
                               "\n                        "
                           )
                         ]),
@@ -2463,7 +2431,7 @@ var render = function() {
                           [
                             _vm._v(
                               "\n                            " +
-                                _vm._s(exam.batch.name) +
+                                _vm._s(lectureSheet.course) +
                                 "\n                        "
                             )
                           ]
@@ -2475,53 +2443,8 @@ var render = function() {
                           [
                             _vm._v(
                               "\n                            " +
-                                _vm._s(exam.category.name) +
+                                _vm._s(lectureSheet.subject) +
                                 "\n                        "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "td",
-                          { staticClass: "border-t px-6 py-2 text-center" },
-                          [
-                            _c("span", { staticClass: "block text-xs" }, [
-                              _vm._v(_vm._s(exam.schedule.start))
-                            ]),
-                            _vm._v(" "),
-                            _c("span", [_vm._v("to")]),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "block text-xs" }, [
-                              _vm._v(_vm._s(exam.schedule.end))
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "td",
-                          { staticClass: "border-t px-6 py-2 text-center" },
-                          [
-                            _vm._v(
-                              "\n                            " +
-                                _vm._s(exam.questions_count) +
-                                " / " +
-                                _vm._s(exam.total_question) +
-                                "\n                        "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "td",
-                          { staticClass: "border-t px-6 py-2 text-center" },
-                          [
-                            _c(
-                              "span",
-                              {
-                                staticClass:
-                                  "text-xs font-bold uppercase tracking-wider"
-                              },
-                              [_vm._v(_vm._s(exam.status))]
                             )
                           ]
                         ),
@@ -2540,10 +2463,10 @@ var render = function() {
                                   "inline-flex text-gray-800 hover:text-gray-500 focus:outline-none",
                                 attrs: {
                                   href: _vm.route(
-                                    "admin.exams.show",
-                                    exam.exam_code
+                                    "admin.lecture-sheets.show",
+                                    lectureSheet.id
                                   ),
-                                  title: "Dashboard"
+                                  title: "Details"
                                 }
                               },
                               [
@@ -2564,8 +2487,17 @@ var render = function() {
                                         "stroke-linecap": "round",
                                         "stroke-linejoin": "round",
                                         "stroke-width": "2",
+                                        d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      attrs: {
+                                        "stroke-linecap": "round",
+                                        "stroke-linejoin": "round",
+                                        "stroke-width": "2",
                                         d:
-                                          "M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"
+                                          "M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
                                       }
                                     })
                                   ]
@@ -2573,47 +2505,45 @@ var render = function() {
                               ]
                             ),
                             _vm._v(" "),
-                            exam.status == "pending"
-                              ? _c(
-                                  "inertia-link",
+                            _c(
+                              "inertia-link",
+                              {
+                                staticClass:
+                                  "inline-flex text-gray-800 hover:text-gray-500 focus:outline-none",
+                                attrs: {
+                                  href: _vm.route(
+                                    "admin.lecture-sheets.edit",
+                                    lectureSheet.id
+                                  ),
+                                  title: "Edit"
+                                }
+                              },
+                              [
+                                _c(
+                                  "svg",
                                   {
-                                    staticClass:
-                                      "inline-flex text-gray-800 hover:text-gray-500 focus:outline-none",
+                                    staticClass: "h-5 w-5 stroke-current",
                                     attrs: {
-                                      href: _vm.route(
-                                        "admin.exams.edit",
-                                        exam.exam_code
-                                      ),
-                                      title: "Edit"
+                                      xmlns: "http://www.w3.org/2000/svg",
+                                      fill: "none",
+                                      viewBox: "0 0 24 24",
+                                      stroke: "currentColor"
                                     }
                                   },
                                   [
-                                    _c(
-                                      "svg",
-                                      {
-                                        staticClass: "h-5 w-5 stroke-current",
-                                        attrs: {
-                                          xmlns: "http://www.w3.org/2000/svg",
-                                          fill: "none",
-                                          viewBox: "0 0 24 24",
-                                          stroke: "currentColor"
-                                        }
-                                      },
-                                      [
-                                        _c("path", {
-                                          attrs: {
-                                            "stroke-linecap": "round",
-                                            "stroke-linejoin": "round",
-                                            "stroke-width": "2",
-                                            d:
-                                              "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                                          }
-                                        })
-                                      ]
-                                    )
+                                    _c("path", {
+                                      attrs: {
+                                        "stroke-linecap": "round",
+                                        "stroke-linejoin": "round",
+                                        "stroke-width": "2",
+                                        d:
+                                          "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                      }
+                                    })
                                   ]
                                 )
-                              : _vm._e(),
+                              ]
+                            ),
                             _vm._v(" "),
                             _c(
                               "button",
@@ -2626,8 +2556,8 @@ var render = function() {
                                     $event.preventDefault()
                                     _vm.deleteModel(
                                       _vm.route(
-                                        "admin.exams.destroy",
-                                        exam.exam_code
+                                        "admin.lecture-sheets.destroy",
+                                        lectureSheet.id
                                       )
                                     )
                                   }
@@ -2666,15 +2596,15 @@ var render = function() {
                     )
                   }),
                   _vm._v(" "),
-                  _vm.exams.data.length === 0
+                  _vm.lectureSheets.data.length === 0
                     ? _c("tr", [
                         _c(
                           "td",
                           {
                             staticClass: "border-t px-6 py-4",
-                            attrs: { colspan: "7" }
+                            attrs: { colspan: "4" }
                           },
-                          [_vm._v("No exams found.")]
+                          [_vm._v("No lecture sheets found.")]
                         )
                       ])
                     : _vm._e()
@@ -2684,8 +2614,8 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm.exams.data.length
-            ? _c("pagination", { attrs: { links: _vm.exams.links } })
+          _vm.lectureSheets.data.length
+            ? _c("pagination", { attrs: { links: _vm.lectureSheets.links } })
             : _vm._e()
         ],
         1
