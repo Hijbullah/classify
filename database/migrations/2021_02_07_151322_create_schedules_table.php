@@ -15,12 +15,13 @@ class CreateSchedulesTable extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
+            $table->uuid('class_id')->unique();
 
-            $table->foreignId('course_id')
+            $table->foreignId('batch_id')
                 ->constrained()
                 ->onDelete('cascade');
 
-            $table->foreignId('batch_id')
+            $table->foreignId('subject_id')
                 ->constrained()
                 ->onDelete('cascade');
 
@@ -29,10 +30,10 @@ class CreateSchedulesTable extends Migration
                 ->constrained()
                 ->onDelete('set null');
 
+
             $table->string('name');
-            $table->uuid('class_id')->unique();
             $table->uuid('meeting_id')->unique()->nullable();
-            $table->string('subject');
+            // $table->string('subject');
             $table->mediumText('topics')->nullable();
             $table->timestamp('class_time')->nullable();
 

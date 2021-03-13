@@ -3444,8 +3444,8 @@ var render = function() {
                       placeholder: "Choose a Subject",
                       options: _vm.subjects,
                       label: "name",
-                      reduce: function(batch) {
-                        return batch.id
+                      reduce: function(subject) {
+                        return subject.id
                       }
                     },
                     model: {

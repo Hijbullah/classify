@@ -11,14 +11,14 @@ class Schedule extends Model
 
     protected $guarded = [];
 
-    public function course()
-    {
-        return $this->belongsTo(Course::class);
-    }
-
     public function batch()
     {
         return $this->belongsTo(Batch::class);
+    }
+
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class);
     }
 
     public function teacher()
@@ -34,6 +34,10 @@ class Schedule extends Model
             });
         });
     }
+
+    protected $casts = [
+        'class_time' => 'datetime'
+    ];
 
     public function getRouteKeyName()
     {

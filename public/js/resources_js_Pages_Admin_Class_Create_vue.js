@@ -649,6 +649,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_datetime__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(vue_datetime__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-select/dist/vue-select.css */ "./node_modules/vue-select/dist/vue-select.css");
 /* harmony import */ var vue_datetime_dist_vue_datetime_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vue-datetime/dist/vue-datetime.css */ "./node_modules/vue-datetime/dist/vue-datetime.css");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -782,20 +792,20 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     courses: Array,
+    subjects: Array,
     teachers: Array
   },
   data: function data() {
+    var _this$$inertia$form;
+
     return {
       batches: [],
-      form: this.$inertia.form({
-        course: null,
+      form: this.$inertia.form((_this$$inertia$form = {
         batch: null,
+        subject: null,
         teacher: null,
-        name: '',
-        subject: '',
-        topics: '',
-        class_time: new Date()
-      })
+        name: ''
+      }, _defineProperty(_this$$inertia$form, "subject", ''), _defineProperty(_this$$inertia$form, "topics", ''), _defineProperty(_this$$inertia$form, "class_time", new Date()), _this$$inertia$form))
     };
   },
   computed: {
@@ -12888,7 +12898,7 @@ var render = function() {
             _c("div", { staticClass: "flex space-x-3" }, [
               _c(
                 "div",
-                { staticClass: "w-1/2" },
+                { staticClass: "w-1/3" },
                 [
                   _c("jet-label", { attrs: { value: "Course" } }),
                   _vm._v(" "),
@@ -12921,7 +12931,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "w-1/2" },
+                { staticClass: "w-1/3" },
                 [
                   _c("jet-label", { attrs: { value: "Batch" } }),
                   _vm._v(" "),
@@ -12948,6 +12958,39 @@ var render = function() {
                   _c("jet-input-error", {
                     staticClass: "mt-2",
                     attrs: { message: _vm.form.errors.batch }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "w-1/3" },
+                [
+                  _c("jet-label", { attrs: { value: "Subject" } }),
+                  _vm._v(" "),
+                  _c("vue-select", {
+                    staticClass: "vue_select_box mt-1",
+                    attrs: {
+                      placeholder: "Choose a Subject",
+                      options: _vm.subjects,
+                      label: "name",
+                      reduce: function(subject) {
+                        return subject.id
+                      }
+                    },
+                    model: {
+                      value: _vm.form.subject,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "subject", $$v)
+                      },
+                      expression: "form.subject"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("jet-input-error", {
+                    staticClass: "mt-2",
+                    attrs: { message: _vm.form.errors.subject }
                   })
                 ],
                 1
@@ -12981,38 +13024,6 @@ var render = function() {
                 _c("jet-input-error", {
                   staticClass: "mt-2",
                   attrs: { message: _vm.form.errors.name }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "mt-4" },
-              [
-                _c("jet-label", {
-                  attrs: { for: "subject", value: "Subject" }
-                }),
-                _vm._v(" "),
-                _c("jet-input", {
-                  staticClass: "mt-1 block w-full",
-                  attrs: {
-                    id: "subject",
-                    type: "text",
-                    placeholder: "e.g. English"
-                  },
-                  model: {
-                    value: _vm.form.subject,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "subject", $$v)
-                    },
-                    expression: "form.subject"
-                  }
-                }),
-                _vm._v(" "),
-                _c("jet-input-error", {
-                  staticClass: "mt-2",
-                  attrs: { message: _vm.form.errors.subject }
                 })
               ],
               1

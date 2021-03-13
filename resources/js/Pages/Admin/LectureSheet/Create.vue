@@ -27,7 +27,7 @@
                                 placeholder="Choose a Subject"
                                 :options="subjects" 
                                 label="name" 
-                                :reduce="batch => batch.id" 
+                                :reduce="subject => subject.id" 
                                 v-model="form.subject"
                             >
                             </vue-select>                        

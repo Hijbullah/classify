@@ -48,7 +48,7 @@
                             </td>
 
                             <td class="border-t px-6 py-2 text-center text-sm">
-                                {{ schedule.teacher ? schedule.teacher : 'Not Assigned' }}
+                                {{ schedule.teacher }}
                             </td>
 
                             <td class="border-t px-6 py-2 text-center text-xs">
@@ -60,30 +60,21 @@
                             </td>
                             
                             <td class="border-t px-6 py-2 text-center space-x-2">
-                                 <button 
-                                    @click="ConfirmLiveClass(schedule)" 
-                                    :disabled="schedule.status == 'ended'"
-                                    class="inline-flex text-gray-800 hover:text-gray-500 focus:outline-none disabled:opacity-50"
-                                >
-                                    <svg class="w-5 h-5 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                                    </svg>
-                                </button>
-
-                                <!-- <inertia-link 
-                                    :href="route('admin.schedules.edit', schedule.class_id)" 
-                                    :disabled="schedule.status == 'ended'"
+                                <inertia-link 
+                                    title="Details"
+                                    :href="route('admin.schedules.show', schedule.class_id)" 
                                     class="inline-flex text-gray-800 hover:text-gray-500 focus:outline-none disabled:opacity-50"
                                 >
                                     <svg class="w-5 h-5 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                     </svg>
-                                </inertia-link> -->
+                                </inertia-link>
 
                                 <inertia-link 
+                                    title="Edit"
                                     :href="route('admin.schedules.edit', schedule.class_id)" 
-                                    v-if="schedule.status != 'ended'"
+                                    v-if="schedule.status === 'pending'"
                                     class="inline-flex text-gray-800 hover:text-gray-500 focus:outline-none"
                                 >
                                     <svg class="h-5 w-5 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -92,6 +83,7 @@
                                 </inertia-link>
 
                                 <button 
+                                    title="Delete"
                                     class="inline-flex text-red-500 hover:text-red-700 focus:outline-none"
                                     @click.prevent="deleteSchedule(route('admin.schedules.destroy', schedule.class_id))"
                                 >
@@ -104,7 +96,7 @@
                             </td>
                         </tr>
                         <tr v-if="schedules.data.length === 0">
-                            <td class="border-t px-6 py-4" colspan="7">No Class found.</td>
+                            <td class="border-t px-6 py-4" colspan="8">No Class found.</td>
                         </tr>
                     
                     </table>
@@ -112,55 +104,20 @@
 
                 <pagination v-if="schedules.data.length" :links="schedules.links" />
             </div>
-
-            <!--Confirmation Modal -->
-            <jet-dialog-modal :show="liveClassConfirmModal" @close="closeModal">
-                <template #title>
-                    Start Live Class
-                </template>
-
-                <template #content>
-                    <p>You are about for start Live Class.</p>
-                    <p v-if="selectedSchedule && !selectedSchedule.teacher">But No Teacher is Assign for this Class. You have to assign a techer first.</p>
-                    <p v-if="selectedSchedule && selectedSchedule.teacher">Are you Sure?</p>
-                </template>
-
-                <template #footer>
-                   <jet-button v-if="selectedSchedule && selectedSchedule.teacher" class="mr-2" @click.native.prevent="startLiveClass">
-                        Confirm
-                    </jet-button>
-
-                   <jet-button v-if="selectedSchedule && !selectedSchedule.teacher" class="mr-2" @click.native.prevent="assignTeacher">
-                        Assign Teacher
-                    </jet-button>
-
-                    <jet-secondary-button @click.native="closeModal">
-                        Nevermind
-                    </jet-secondary-button>
-                </template>
-            </jet-dialog-modal>
         </div>
     </admin-layout>
 </template>
 
 <script>
     import AdminLayout from '@/Layouts/AdminLayout'
-    import JetDialogModal from '@/Components/Shared/Modal/DialogModal'
     import Pagination from '@/Components/Shared/Pagination'
     import SearchFilter from '@/Components/Shared/SearchFilter'
-    import JetDangerButton from '@/Components/Shared/Button/DangerButton'
-    import JetSecondaryButton from '@/Components/Shared/Button/SecondaryButton'
-    import JetButton from '@/Components/Shared/Button/Button'
 
     export default {
         components: {
             AdminLayout,
-            JetDialogModal,
             Pagination,
-            SearchFilter,
-            JetDangerButton,
-            JetSecondaryButton,
-            JetButton
+            SearchFilter
         },
         props: {
             schedules: Object,
@@ -168,9 +125,6 @@
         },
         data() {
             return {
-                liveClassConfirmModal: false,
-                selectedSchedule: null,
-
                 form: {
                     search: this.filters.search,
                 }
@@ -186,27 +140,6 @@
             },
         },
         methods: {
-            ConfirmLiveClass(schedule) {
-                console.log(schedule);
-                this.selectedSchedule = schedule;
-                this.liveClassConfirmModal = true;
-            },
-
-            closeModal() {
-                this.liveClassConfirmModal = false;
-                this.selectedSchedule = null;
-            },
-
-            assignTeacher() {
-                this.liveClassConfirmModal = false;
-                this.$inertia.get(route('admin.schedules.edit', this.selectedSchedule.class_id));
-            },
-
-            startLiveClass() {
-                this.liveClassConfirmModal = false;
-                this.$inertia.get(route('class.live.start', this.selectedSchedule.class_id));
-            },
-
             deleteSchedule($url) {
                 this.$inertia.delete($url, {
                     onBefore: () => confirm('Are you sure you want to delete?'),

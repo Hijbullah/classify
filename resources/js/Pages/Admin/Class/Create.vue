@@ -5,7 +5,7 @@
             <div class="pt-5">
                 <form @submit.prevent="create">
                     <div class="flex space-x-3">
-                        <div class="w-1/2">
+                        <div class="w-1/3">
                             <jet-label value="Course" />
                             <vue-select 
                                 class="vue_select_box mt-1"
@@ -19,7 +19,7 @@
                             <jet-input-error :message="form.errors.course" class="mt-2" />
                         </div>
 
-                        <div class="w-1/2">
+                        <div class="w-1/3">
                             <jet-label value="Batch" />
                             <vue-select 
                                 class="vue_select_box mt-1"
@@ -33,18 +33,26 @@
                             </vue-select>                        
                             <jet-input-error :message="form.errors.batch" class="mt-2" />
                         </div>
+
+                        <div class="w-1/3">
+                            <jet-label value="Subject" />
+                            <vue-select 
+                                class="vue_select_box mt-1"
+                                placeholder="Choose a Subject"
+                                :options="subjects" 
+                                label="name" 
+                                :reduce="subject => subject.id" 
+                                v-model="form.subject"
+                            >
+                            </vue-select>                        
+                            <jet-input-error :message="form.errors.subject" class="mt-2" />
+                        </div>
                     </div>
 
                     <div class="mt-4">
                         <jet-label for="name" value="Class Name" />
                         <jet-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" placeholder="e.g. Lecture 01" />
                         <jet-input-error :message="form.errors.name" class="mt-2" />
-                    </div> 
-
-                    <div class="mt-4">
-                        <jet-label for="subject" value="Subject" />
-                        <jet-input id="subject" type="text" class="mt-1 block w-full" v-model="form.subject" placeholder="e.g. English" />
-                        <jet-input-error :message="form.errors.subject" class="mt-2" />
                     </div> 
 
                     <div class="mt-4">
@@ -134,6 +142,7 @@
         },
         props: {
             courses: Array,
+            subjects: Array,
             teachers: Array,
         },
 
@@ -141,8 +150,8 @@
             return {
                 batches: [],
                 form: this.$inertia.form({
-                    course: null,
                     batch: null,
+                    subject: null,
                     teacher: null,
                     name: '',
                     subject: '',

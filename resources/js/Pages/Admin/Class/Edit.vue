@@ -5,14 +5,28 @@
             <div class="pt-5">
                 <form @submit.prevent="update">
                     <div class="flex space-x-3">
-                        <div class="w-1/2">
+                        <div class="w-1/3">
                             <jet-label for="course" value="Course" />
-                            <jet-input id="course" type="text" class="mt-1 block w-full disabled:opacity-60" :value="schedule.course" disabled />
+                            <jet-input id="course" :value="schedule.batch.course.name" type="text" class="mt-1 block w-full disabled:opacity-50" disabled />   
                         </div>
 
-                         <div class="w-1/2">
+                        <div class="w-1/3">
                             <jet-label for="batch" value="Batch" />
-                            <jet-input id="batch" type="text" class="mt-1 block w-full disabled:opacity-60" :value="schedule.batch" disabled />
+                            <jet-input id="batch" :value="schedule.batch.name" type="text" class="mt-1 block w-full disabled:opacity-50" disabled />   
+                        </div>
+
+                        <div class="w-1/3">
+                            <jet-label value="Subject" />
+                            <vue-select 
+                                class="vue_select_box mt-1"
+                                placeholder="Choose a Subject"
+                                :options="subjects" 
+                                label="name" 
+                                :reduce="subject => subject.id" 
+                                v-model="form.subject"
+                            >
+                            </vue-select>                        
+                            <jet-input-error :message="form.errors.subject" class="mt-2" />
                         </div>
                     </div>
 
@@ -20,12 +34,6 @@
                         <jet-label for="name" value="Class Name" />
                         <jet-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" placeholder="e.g. Lecture 01" />
                         <jet-input-error :message="form.errors.name" class="mt-2" />
-                    </div> 
-
-                    <div class="mt-4">
-                        <jet-label for="subject" value="Subject" />
-                        <jet-input id="subject" type="text" class="mt-1 block w-full" v-model="form.subject" placeholder="e.g. English" />
-                        <jet-input-error :message="form.errors.subject" class="mt-2" />
                     </div> 
 
                     <div class="mt-4">
@@ -115,15 +123,16 @@
         },
         props: {
             schedule: Object,
+            subjects: Array,
             teachers: Array,
         },
 
         data() {
             return {
                 form: this.$inertia.form({
+                    subject: this.schedule.subject,
                     teacher: this.schedule.teacher,
                     name: this.schedule.name,
-                    subject: this.schedule.subject,
                     topics: this.schedule.topics,
                     class_time: this.schedule.class_time,
                 }),
