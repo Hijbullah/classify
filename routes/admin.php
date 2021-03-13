@@ -91,8 +91,18 @@ Route::middleware(['auth', 'verified'])->group(function() {
         Route::get('/password', [ProfileController::class, 'changePassword'])->name('password.change');
         Route::put('/password/update', [ProfileController::class, 'updatePassword'])->name('password.update');
 
-        Route::get('/classes', [ClassScheduleController::class, 'allClasses'])->name('classes.index');
+        Route::get('/schedules', [ClassScheduleController::class, 'index'])->name('schedules.index');
+        Route::get('/schedules/{schedule:class_id}', [ClassScheduleController::class, 'show'])->name('schedules.show');
+        //notes
+        Route::get('/schedules/{schedule}/notes', [ClassScheduleController::class, 'showClassNotes'])->name('schedules.notes');
+        Route::post('/schedules/{schedule}/notes', [ClassScheduleController::class, 'uploadClassNote']);
+        //Route::get('/notes/{schedule}/download-all', [ClassScheduleController::class, 'downloadAllNotes'])->name('notes.download.all');
+        //Route::get('/notes/{media}/download-single', [ClassScheduleController::class, 'downloadSingleNote'])->name('notes.download.single');
+        Route::delete('/notes/media/{media}', [ClassScheduleController::class, 'deleteClassNote'])->name('notes.destroy');
     }); 
+
+    Route::get('/notes/{schedule}/download-all', [ClassScheduleController::class, 'downloadAllNotes'])->name('notes.download.all');
+    Route::get('/notes/{media}/download-single', [ClassScheduleController::class, 'downloadSingleNote'])->name('notes.download.single');
     
     Route::get('/live/{class}/start', [LiveClassController::class, 'startClass'])->name('class.live.start');
     Route::post('/live-class-update/{classId}', [LiveClassController::class, 'updateLiveClass'])->name('class.live.update');

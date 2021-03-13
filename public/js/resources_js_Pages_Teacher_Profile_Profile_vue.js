@@ -1745,8 +1745,8 @@ var render = function() {
             "sidebar-nav-link",
             {
               attrs: {
-                href: _vm.route("teachers.classes.index"),
-                active: _vm.route().current("teachers.classes.*")
+                href: _vm.route("teachers.schedules.index"),
+                active: _vm.route().current("teachers.schedules.*")
               },
               scopedSlots: _vm._u([
                 {

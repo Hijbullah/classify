@@ -784,6 +784,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -796,7 +841,8 @@ __webpack_require__.r(__webpack_exports__);
     AppSecondaryButton: _Components_Shared_Button_SecondaryButton__WEBPACK_IMPORTED_MODULE_3__.default
   },
   props: {
-    schedule: Object
+    schedule: Object,
+    classNotes: Array
   },
   data: function data() {
     return {
@@ -2987,23 +3033,198 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "mt-5 px-4 py-5 bg-white shadow-sm" }, [
+          _c("div", { staticClass: "mt-8 px-4 py-5 bg-white shadow-sm" }, [
             _c(
-              "h2",
-              {
-                staticClass: "mb-3 text-sm font-bold uppercase tracking-wider"
-              },
-              [_vm._v("Class Notes")]
+              "div",
+              { staticClass: "flex justify-between items-center mb-5" },
+              [
+                _c(
+                  "h2",
+                  { staticClass: "text-sm font-bold uppercase tracking-wider" },
+                  [_vm._v("All Class Notes")]
+                ),
+                _vm._v(" "),
+                _vm.classNotes.length
+                  ? _c(
+                      "a",
+                      {
+                        staticClass:
+                          "inline-flex text-gray-800 border-b hover:text-gray-500 focus:outline-none",
+                        attrs: {
+                          href: _vm.route(
+                            "notes.download.all",
+                            _vm.schedule.class_id
+                          )
+                        }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "w-5 h-5 stroke-current",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              fill: "none",
+                              viewBox: "0 0 24 24",
+                              stroke: "currentColor"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                "stroke-linecap": "round",
+                                "stroke-linejoin": "round",
+                                "stroke-width": "2",
+                                d:
+                                  "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "ml-2" }, [
+                          _vm._v("All Notes")
+                        ])
+                      ]
+                    )
+                  : _vm._e()
+              ]
             ),
             _vm._v(" "),
             _c("div", [
-              _c("p", { staticClass: "text-red-400" }, [
-                _vm._v("No Class notes found...")
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v("Teacher can add class note from his dashboard.")
-              ])
+              _c(
+                "table",
+                { staticClass: "w-full whitespace-no-wrap" },
+                [
+                  _c("tr", { staticClass: "text-left" }, [
+                    _c("th", { staticClass: "px-6 pt-4 pb-4 font-normal" }, [
+                      _vm._v("Name")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "th",
+                      { staticClass: "px-6 pt-4 pb-4 font-normal text-center" },
+                      [_vm._v("Type")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "th",
+                      { staticClass: "px-6 pt-4 pb-4 font-normal text-center" },
+                      [_vm._v("Size")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "th",
+                      { staticClass: "px-6 pt-4 pb-4 font-normal text-center" },
+                      [_vm._v("Action")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.classNotes, function(classNote) {
+                    return _c(
+                      "tr",
+                      {
+                        key: classNote.id,
+                        staticClass:
+                          "hover:bg-gray-100 focus-within:bg-gray-100"
+                      },
+                      [
+                        _c(
+                          "td",
+                          { staticClass: "border-t px-6 py-2 text-sm" },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(classNote.name) +
+                                "\n                            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          {
+                            staticClass:
+                              "border-t px-6 py-2 text-sm text-center"
+                          },
+                          [_c("p", [_vm._v(_vm._s(classNote.type))])]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          {
+                            staticClass:
+                              "border-t px-6 py-2 text-sm text-center"
+                          },
+                          [_c("p", [_vm._v(_vm._s(classNote.size))])]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          {
+                            staticClass:
+                              "border-t px-6 py-2 text-center space-x-2"
+                          },
+                          [
+                            _c(
+                              "a",
+                              {
+                                staticClass:
+                                  "inline-flex text-gray-800 hover:text-gray-500 focus:outline-none",
+                                attrs: {
+                                  href: _vm.route(
+                                    "notes.download.single",
+                                    classNote.id
+                                  )
+                                }
+                              },
+                              [
+                                _c(
+                                  "svg",
+                                  {
+                                    staticClass: "w-5 h-5 stroke-current",
+                                    attrs: {
+                                      xmlns: "http://www.w3.org/2000/svg",
+                                      fill: "none",
+                                      viewBox: "0 0 24 24",
+                                      stroke: "currentColor"
+                                    }
+                                  },
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        "stroke-linecap": "round",
+                                        "stroke-linejoin": "round",
+                                        "stroke-width": "2",
+                                        d:
+                                          "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                                      }
+                                    })
+                                  ]
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  }),
+                  _vm._v(" "),
+                  _vm.classNotes.length === 0
+                    ? _c("tr", [
+                        _c(
+                          "td",
+                          {
+                            staticClass: "border-t px-6 py-4",
+                            attrs: { colspan: "4" }
+                          },
+                          [_vm._v("No Class note found.")]
+                        )
+                      ])
+                    : _vm._e()
+                ],
+                2
+              )
             ])
           ])
         ])

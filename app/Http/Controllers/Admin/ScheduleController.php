@@ -6,12 +6,13 @@ use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Batch;
 use App\Models\Course;
+use App\Models\Subject;
 use App\Models\Schedule;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Subject;
 use Illuminate\Support\Facades\Redirect;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class ScheduleController extends Controller
 {
@@ -112,6 +113,14 @@ class ScheduleController extends Controller
                 'class_time' => $schedule->class_time->toDayDateTimeString(),
                 'status' => $schedule->status,
             ],
+            'classNotes' => $schedule->getMedia('class-notes')->map(function(Media $media) {
+                return [
+                    'id' => $media->id,
+                    'name' => $media->file_name,
+                    'type' => $media->mime_type,
+                    'size' => $media->human_readable_size,
+                ];
+            })
         ]);
     }
 
