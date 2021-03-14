@@ -68,20 +68,14 @@ class LectureSheetController extends Controller
             'file' => ['required', 'file', 'mimes:csv,xlsx,xls,pdf,doc,docx', 'max:2048']
         ]);
 
-        if($request->hasFile('file'))
-        {
-            $file = $request->file('file');
-            $fileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME) . '_' . time() . Str::random(10) . '.' . $file->extension();
-            $path = $file->storeAs('lecture-sheets', $fileName);
-        }
-
-        LectureSheet::create([
+        $lectureSheet = LectureSheet::create([
             'course_id' => $request->course,
             'subject_id' => $request->subject,
             'title' => $request->title,
-            'topics' => $request->topics,
-            'file' => $path ? $path : null
+            'topics' => $request->topics
         ]);
+
+        $lectureSheet->addMedia($request->file('file'))->toMediaCollection('lecture-sheet');
 
         return Redirect::route('admin.lecture-sheets.index');
     }
@@ -94,6 +88,8 @@ class LectureSheetController extends Controller
      */
     public function show(LectureSheet $lectureSheet)
     {
+        $file = $lectureSheet->getFirstMedia('lecture-sheet');
+
         return Inertia::render('Admin/LectureSheet/Show', [
             'lectureSheet' => [
                 'id' => $lectureSheet->id,
@@ -101,8 +97,12 @@ class LectureSheetController extends Controller
                 'subject' => $lectureSheet->subject()->select('id', 'name')->first()->name,
                 'title' => $lectureSheet->title,
                 'topics' => $lectureSheet->topics,
-                'orginal_file_name' => Str::of($lectureSheet->file)->basename()->beforeLast('_'). '.' . Str::of($lectureSheet->file)->afterLast('.'),
-                'file_url' => Storage::url($lectureSheet->file)
+                'file' => [
+                    'id' => $file->id,
+                    'name' => $file->file_name,
+                    'type' => $file->mime_type,
+                    'size' => $file->human_readable_size,
+                ]
             ]
         ]);
     }
@@ -124,7 +124,7 @@ class LectureSheetController extends Controller
                 'subject' => $lectureSheet->subject_id,
                 'title' => $lectureSheet->title,
                 'topics' => $lectureSheet->topics,
-                'orginal_file_name' => Str::of($lectureSheet->file)->basename()->beforeLast('_'). '.' . Str::of($lectureSheet->file)->afterLast('.'),
+                'file' => $lectureSheet->getFirstMedia('lecture-sheet')->file_name
             ]
         ]);
     }
@@ -146,25 +146,16 @@ class LectureSheetController extends Controller
             'file' => ['nullable', 'file', 'mimes:csv,xlsx,xls,pdf,doc,docx', 'max:2048']
         ]);
 
-        if($request->hasFile('file'))
-        {
-            $file = $request->file('file');
-            $fileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME) . '_' . time() . Str::random(10) . '.' . $file->extension();
-            $path = $file->storeAs('lecture-sheets', $fileName);
-
-            if($path)
-            {
-                Storage::delete($lectureSheet->file);
-                $lectureSheet->file = $path;
-            }
-
-        }
-
         $lectureSheet->course_id = $request->course;
         $lectureSheet->subject_id = $request->subject;
         $lectureSheet->title = $request->title;
         $lectureSheet->topics = $request->topics;
         $lectureSheet->save();
+
+        if($request->hasFile('file'))
+        {
+            $lectureSheet->addMedia($request->file('file'))->toMediaCollection('lecture-sheet');
+        }
 
         return Redirect::route('admin.lecture-sheets.show', $lectureSheet->id);
     }

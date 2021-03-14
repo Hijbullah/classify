@@ -26,7 +26,7 @@ class CreateLectureSheetsTable extends Migration
 
             $table->string('title');
             $table->mediumText('topics')->nullable();
-            $table->string('file');
+            // $table->string('file');
 
             $table->timestamps();
         });

@@ -7,7 +7,7 @@ use App\Http\Controllers\Student\ExamController;
 use App\Http\Controllers\Student\ClassController;
 use App\Http\Controllers\Student\ResultController;
 use App\Http\Controllers\Student\AdmissionController;
-
+use App\Http\Controllers\Student\LectureSheetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +35,12 @@ Route::prefix('students')->name('students.')->middleware('auth')->group(function
     })->name('dashboard');
 
     Route::get('/classes', [ClassController::class, 'index'])->name('classes.index');
+    Route::get('/classes/{schedule:class_id}', [ClassController::class, 'show'])->name('classes.show');
     Route::get('/classes/{class_id}/live', [ClassController::class, 'join'])->name('classes.join');
+    
+    // lecturesheets
+    Route::get('/lecture-sheets', [LectureSheetController::class, 'index'])->name('lectureSheets.index');
+    Route::get('/lecture-sheets/{lectureSheet}/download', [LectureSheetController::class, 'download'])->name('lectureSheets.download');
 
     //exams
     Route::get('/exams', [ExamController::class, 'index'])->name('exams.index');

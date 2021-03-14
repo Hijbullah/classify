@@ -351,6 +351,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1228,8 +1236,25 @@ var render = function() {
                     "student-nav-link",
                     {
                       attrs: {
+                        href: _vm.route("students.lectureSheets.index"),
+                        active: _vm
+                          .route()
+                          .current("students.lectureSheets.index")
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            Lecture Sheets\n                        "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "student-nav-link",
+                    {
+                      attrs: {
                         href: _vm.route("students.classes.index"),
-                        active: _vm.route().current("students.classes.index")
+                        active: _vm.route().current("students.classes.*")
                       }
                     },
                     [
@@ -1473,6 +1498,23 @@ var render = function() {
                     }
                   },
                   [_vm._v("\n                    Dashboard\n                ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "student-responsive-nav-link",
+                  {
+                    attrs: {
+                      href: _vm.route("students.lectureSheets.index"),
+                      active: _vm
+                        .route()
+                        .current("students.lectureSheets.index")
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    Lecture Sheets\n                "
+                    )
+                  ]
                 ),
                 _vm._v(" "),
                 _c(

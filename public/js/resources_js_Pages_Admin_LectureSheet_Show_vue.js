@@ -503,6 +503,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -510,19 +512,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     lectureSheet: Object
-  },
-  methods: {// toogleExamPublication() {
-    //     this.$inertia.put(route('admin.exams.publish', this.exam.exam_code), {}, {
-    //         preserveScroll: true,
-    //         onSuccess: () => {
-    //             let message = 'Exam published successfully!';
-    //             if(this.exam === 'pending') {
-    //                 message = 'Exam un published successfully!';
-    //             } 
-    //             alert(message);
-    //         }
-    //     });
-    // }
   }
 });
 
@@ -2042,8 +2031,12 @@ var render = function() {
             _vm._v(" "),
             _c("div", [
               _c("p", { staticClass: "text-lg font-bold" }, [
-                _vm._v(_vm._s(_vm.lectureSheet.orginal_file_name))
-              ])
+                _vm._v("Name: " + _vm._s(_vm.lectureSheet.file.name))
+              ]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Type: " + _vm._s(_vm.lectureSheet.file.type))]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Size: " + _vm._s(_vm.lectureSheet.file.size))])
             ])
           ])
         ])

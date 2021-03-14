@@ -51,7 +51,7 @@
                             </td>
                             
                             <td class="border-t px-6 py-2 text-center space-x-2">
-                                 <inertia-link 
+                                <inertia-link 
                                     :href="route('admin.exams.show', exam.exam_code)" 
                                     title="Dashboard"
                                     class="inline-flex text-gray-800 hover:text-gray-500 focus:outline-none"

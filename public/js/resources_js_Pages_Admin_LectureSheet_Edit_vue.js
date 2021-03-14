@@ -3544,7 +3544,7 @@ var render = function() {
                 _c("jet-label", { attrs: { value: "Uploaded File" } }),
                 _vm._v(" "),
                 _c("p", { staticClass: "mt-1 font-bold" }, [
-                  _vm._v(_vm._s(_vm.lectureSheet.orginal_file_name))
+                  _vm._v(_vm._s(_vm.lectureSheet.file))
                 ])
               ],
               1

@@ -30,7 +30,9 @@
                    <div class="w-1/3 px-4 py-5 bg-white shadow-sm">
                        <h2 class="mb-3 text-sm font-bold uppercase tracking-wider">File Info</h2>
                        <div>
-                           <p class="text-lg font-bold">{{  lectureSheet.orginal_file_name }}</p>
+                           <p class="text-lg font-bold">Name: {{  lectureSheet.file.name }}</p>
+                           <p>Type: {{  lectureSheet.file.type }}</p>
+                           <p>Size: {{  lectureSheet.file.size }}</p>
                        </div>
                    </div>
                 </div>
@@ -48,21 +50,6 @@
         },
         props: {
             lectureSheet: Object,
-        },
-       
-        methods: {
-            // toogleExamPublication() {
-            //     this.$inertia.put(route('admin.exams.publish', this.exam.exam_code), {}, {
-            //         preserveScroll: true,
-            //         onSuccess: () => {
-            //             let message = 'Exam published successfully!';
-            //             if(this.exam === 'pending') {
-            //                 message = 'Exam un published successfully!';
-            //             } 
-            //             alert(message);
-            //         }
-            //     });
-            // }
         }
     }
 </script>

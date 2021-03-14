@@ -55,7 +55,7 @@
 
                     <div class="mt-4">
                         <jet-label value="Uploaded File" />
-                        <p class="mt-1 font-bold">{{ lectureSheet.orginal_file_name }}</p>
+                        <p class="mt-1 font-bold">{{ lectureSheet.file }}</p>
                     </div>
                     
                     <div class="mt-4">

@@ -18,7 +18,11 @@
                                 Dashboard
                             </student-nav-link>
 
-                            <student-nav-link :href="route('students.classes.index')" :active="route().current('students.classes.index')">
+                            <student-nav-link :href="route('students.lectureSheets.index')" :active="route().current('students.lectureSheets.index')">
+                                Lecture Sheets
+                            </student-nav-link>
+
+                            <student-nav-link :href="route('students.classes.index')" :active="route().current('students.classes.*')">
                                 Live Class
                             </student-nav-link>
 
@@ -94,6 +98,10 @@
                         Dashboard
                     </student-responsive-nav-link>
                     
+                    <student-responsive-nav-link :href="route('students.lectureSheets.index')" :active="route().current('students.lectureSheets.index')">
+                        Lecture Sheets
+                    </student-responsive-nav-link>
+
                     <student-responsive-nav-link :href="route('students.classes.index')" :active="route().current('students.classes.index')">
                         Live Class
                     </student-responsive-nav-link>
