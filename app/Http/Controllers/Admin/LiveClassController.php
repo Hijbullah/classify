@@ -28,7 +28,7 @@ class LiveClassController extends Controller
                 'email' => $schedule->teacher->email
             ],
             'mode' => 'start',
-            'backRoute' => Auth::user()->type == 'admin' ? 'admin.schedules.index' : 'teachers.classes.index'
+            'backRoute' => Auth::user()->type == 'admin' ? 'admin.schedules.index' : 'teachers.schedules.index'
         ]);
     }
 
