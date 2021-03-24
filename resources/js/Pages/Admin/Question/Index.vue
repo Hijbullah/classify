@@ -12,12 +12,13 @@
                     >
                         Add Questions
                     </inertia-link>
-                    <!-- <inertia-link 
-                        :href="route('admin.exams.index')" 
+                    <inertia-link 
+                        v-if="!hasQuestions"
+                        :href="route('admin.questions.create', [exam.exam_code, 'file'])" 
                         class="btn-main px-3 py-2 text-sm font-semibold uppercase tracking-widest"
                     >
                         Import Questions
-                    </inertia-link> -->
+                    </inertia-link>
     
                     <inertia-link 
                         :href="route('admin.exams.show', exam.exam_code)" 
@@ -69,6 +70,9 @@
             },
             hasEnoughQuestions() {
                 return this.exam.total_question == this.questionCount;
+            },
+            hasQuestions() {
+                return this.questionCount ? true : false;
             }
         }
     }

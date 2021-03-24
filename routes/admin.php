@@ -35,6 +35,10 @@ Route::middleware(['auth', 'verified'])->group(function() {
         Route::get('/', function () {
             return Inertia::render('Admin/Dashboard');
         })->name('dashboard');
+
+        Route::get('/soon', function () {
+            return Inertia::render('Admin/ComingSoon');
+        })->name('soon');
     
         Route::resource('courses', CourseController::class)->scoped([
             'course' => 'slug',
@@ -63,19 +67,24 @@ Route::middleware(['auth', 'verified'])->group(function() {
         Route::put('/exams/{exam}/publish', [ExamController::class, 'toogleExamPublication'])->name('exams.publish');
         Route::resource('exams', ExamController::class);
         // questions
-        Route::get('/exams/{exam:exam_code}/questions', [QuestionController::class, 'index'])->name('questions.index');
-        Route::get('/exams/{exam:exam_code}/questions/create/{type}', [QuestionController::class, 'create'])
-                ->where('type', 'form|file')
-                ->name('questions.create');
-
+        Route::get('/exams/{exam}/questions', [QuestionController::class, 'index'])->name('questions.index');
+        Route::get('/exams/{exam}/questions/create/{type}', [QuestionController::class, 'create'])
+        ->where('type', 'form|file')
+        ->name('questions.create');
+        
         Route::post('/questions/form', [QuestionController::class, 'store'])->name('questions.store.form');
-        Route::get('/exams/{exam:exam_code}/questions/{question}/edit', [QuestionController::class, 'edit'])->name('questions.edit');
+
+        Route::get('/exams/{exam:id}/questions-format', [QuestionController::class, 'downloadQuestionsFormat'])->name('questions.format');
+
+        Route::post('/questions/import-question', [QuestionController::class, 'importQuestions'])->name('questions.store.import');
+        Route::get('/exams/{exam}/questions/{question}/edit', [QuestionController::class, 'edit'])->name('questions.edit');
         Route::put('/questions/{question}', [QuestionController::class, 'update'])->name('questions.update');
         Route::delete('/questions/{question}', [QuestionController::class, 'destroy'])->name('questions.destroy');
-        
+
+
         // results
-        Route::get('exams/{exam:exam_code}/results', [ResultController::class, 'showExamResults'])->name('exams.results');
-        Route::put('exams/{exam:exam_code}/publish-result', [ResultController::class, 'publishResults'])->name('exams.publish-results');
+        Route::get('exams/{exam}/results', [ResultController::class, 'showExamResults'])->name('exams.results');
+        Route::put('exams/{exam}/publish-result', [ResultController::class, 'publishResults'])->name('exams.publish-results');
 
     });
 

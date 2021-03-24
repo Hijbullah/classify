@@ -10,12 +10,6 @@
 
         <div class="p-5">
             <div class="mb-5 w-full">
-                <!-- <textarea 
-                    rows="3" 
-                    class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" 
-                    placeholder="Question"
-                    v-model="form.question"
-                ></textarea> -->
                 <question-editor :content.sync="form.question" as="question"></question-editor>
                 <jet-input-error :message="form.errors.question"  class="mt-2" />
             </div>
@@ -25,12 +19,6 @@
                     <input v-model="form.answer" value="a" type="radio" class="h-4 w-4 cursor-pointer text-indigo-600 transition duration-150 ease-in-out">
                     <div class="flex-1">
                         <div class="flex flex-col">
-                            <!-- <textarea 
-                                rows="2" 
-                                class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" 
-                                placeholder="Option"
-                                v-model="form.option_a"
-                            ></textarea> -->
                             <question-editor :content.sync="form.option_a" as="options"></question-editor>
                         </div>
                         <jet-input-error :message="form.errors.option_a"  class="mt-2" />
@@ -40,12 +28,6 @@
                     <input v-model="form.answer" value="b" type="radio" class="h-4 w-4 cursor-pointer text-indigo-600 transition duration-150 ease-in-out">
                     <div class="flex-1">
                         <div class="flex flex-col">
-                            <!-- <textarea 
-                                rows="2" 
-                                class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" 
-                                placeholder="Option"
-                                v-model="form.option_b"
-                            ></textarea> -->
                             <question-editor :content.sync="form.option_b" as="options"></question-editor>
                         </div>
                         <jet-input-error :message="form.errors.option_b"  class="mt-2" />
@@ -55,12 +37,6 @@
                     <input v-model="form.answer" value="c" type="radio" class="h-4 w-4 cursor-pointer text-indigo-600 transition duration-150 ease-in-out">
                     <div class="flex-1">
                         <div class="flex flex-col">
-                            <!-- <textarea 
-                                rows="2" 
-                                class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" 
-                                placeholder="Option"
-                                v-model="form.option_c"
-                            ></textarea> -->
                             <question-editor :content.sync="form.option_c" as="options"></question-editor>
                         </div>
                         <jet-input-error :message="form.errors.option_c"  class="mt-2" />
@@ -70,12 +46,6 @@
                     <input v-model="form.answer" value="d" type="radio" class="h-4 w-4 cursor-pointer text-indigo-600 transition duration-150 ease-in-out">
                     <div class="flex-1">
                         <div class="flex flex-col">
-                            <!-- <textarea 
-                                rows="2" 
-                                class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" 
-                                placeholder="Option"
-                                v-model="form.option_d"
-                            ></textarea> -->
                             <question-editor :content.sync="form.option_d" as="options"></question-editor>
                         </div>
                         <jet-input-error :message="form.errors.option_d"  class="mt-2" />

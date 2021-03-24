@@ -5,16 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Exam;
 use Inertia\Inertia;
 use App\Models\Question;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Exports\QuestionsExport;
+use App\Imports\QuestionsImport;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Redirect;
 
 class QuestionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Exam $exam)
     {
         return Inertia::render('Admin/Question/Index', [
@@ -44,11 +44,6 @@ class QuestionController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(Exam $exam, $type)
     {
         return Inertia::render('Admin/Question/Create', [
@@ -57,7 +52,7 @@ class QuestionController extends Controller
                 'id' => $exam->id,
                 'exam_code' => $exam->exam_code,
                 'name' => $exam->name,
-                'subjects' =>collect($exam->subjects)->transform(function($subject) use($exam) {
+                'subjects' => collect($exam->subjects)->transform(function($subject) use($exam) {
                                     return [
                                         'id' => $subject['id'],
                                         'name' => $subject['name'],
@@ -69,12 +64,6 @@ class QuestionController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -104,12 +93,44 @@ class QuestionController extends Controller
         return back();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Question  $question
-     * @return \Illuminate\Http\Response
-     */
+    public function importQuestions(Request $request)
+    {
+        $request->validate([
+            'exam' => ['required', 'numeric'],
+            'file' => ['required', 'file', 'mimes:csv,xlsx,ods', 'max:2048']
+        ]);
+
+        Excel::import(new QuestionsImport($request->exam), $request->file('file'));
+
+
+        return Redirect::route('admin.questions.index', Exam::whereId($request->exam)->select('exam_code')->first()->exam_code);
+    }
+
+    public function downloadQuestionsFormat(Exam $exam)
+    {
+        $data = [];
+
+        $fileName = Str::of($exam->name)->camel() . '.ods';
+
+
+        foreach ($exam->subjects as $subject) {
+            for ($i = 0; $i < $subject['no_of_question']; $i++) { 
+                $data[] = [
+                    'subject_id' => $subject['id'],
+                    'subject' => $subject['name'],
+                    'question' => '',
+                    'option_a' => '',
+                    'option_b' => '',
+                    'option_c' => '',
+                    'option_d' => '',
+                    'answer' => ''
+                ];
+            }
+        }
+
+        return Excel::download(new QuestionsExport($data), $fileName);
+    }
+
     public function edit(Exam $exam, Question $question)
     {
         return Inertia::render('Admin/Question/Edit', [
@@ -132,13 +153,6 @@ class QuestionController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Question  $question
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Question $question)
     {
         $request->validate([
@@ -160,12 +174,6 @@ class QuestionController extends Controller
         return back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Question  $question
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Question $question)
     {
         $question->delete();

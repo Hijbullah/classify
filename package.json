@@ -21,16 +21,16 @@
         "lodash": "^4.17.19",
         "luxon": "^1.26.0",
         "portal-vue": "^2.1.7",
-        "postcss": "^8.1.14",
+        "postcss": "^8.2.8",
         "postcss-import": "^14.0.0",
         "quill-blot-formatter": "^1.0.5",
-        "tailwindcss": "^2.0.3",
+        "tailwindcss": "^2.0.4",
         "vue": "^2.6.12",
         "vue-datetime": "^1.0.0-beta.14",
         "vue-loader": "^15.9.6",
         "vue-select": "^3.11.2",
         "vue-template-compiler": "^2.6.12",
         "vue2-editor": "^2.10.2",
-        "weekstart": "^1.0.1"
+        "weekstart": "^1.1.0"
     }
 }

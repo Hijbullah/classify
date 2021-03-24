@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="flex-1">
-            <live-meet ref="liveMeeting" domain="meet.jit.si" :options="options"/>
+            <live-meet ref="liveMeeting" domain="meet.baazaar.win" :options="options"/>
         </div>
     </div>
 </template>
@@ -48,7 +48,7 @@
             options () {
                 return {
                     roomName: this.meetingId,
-                    noSSL: false,
+                    // noSSL: false,
                     userInfo: {
                         email: this.userInfo.email,
                         displayName: this.userInfo.name,
@@ -60,7 +60,7 @@
                         SHOW_JITSI_WATERMARK: false,
                         JITSI_WATERMARK_LINK: 'https://hijbu.com',
                         SHOW_WATERMARK_FOR_GUESTS: false,
-                        SHOW_CHROME_EXTENSION_BANNER: false,
+                        SHOW_CHROME_EXTENSION_BANNER: true,
                         SETTINGS_SECTIONS: [ 'devices', 'language', 'moderator', 'profile' ],
                         TOOLBAR_BUTTONS: [
                             'microphone', 'camera', 'closedcaptions', 'desktop', 'fullscreen',
