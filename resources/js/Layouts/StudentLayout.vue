@@ -34,6 +34,10 @@
                                 My Results
                             </student-nav-link>
 
+                            <student-nav-link :href="route('students.profile.show')" :active="route().current('students.profile.*')">
+                                My Profile
+                            </student-nav-link>
+
                             <!-- <student-nav-link :href="route('profile.show')" :active="route().current('profile.show')">
                                 My Profile
                             </student-nav-link> -->
@@ -112,6 +116,10 @@
 
                     <student-responsive-nav-link :href="route('students.results.index')" :active="route().current('students.results.*')">
                         My Results
+                    </student-responsive-nav-link>
+
+                    <student-responsive-nav-link :href="route('students.profile.show')" :active="route().current('students.profile.*')">
+                        My Profile
                     </student-responsive-nav-link>
                 </div>
 

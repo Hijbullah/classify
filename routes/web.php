@@ -8,6 +8,7 @@ use App\Http\Controllers\Student\ClassController;
 use App\Http\Controllers\Student\ResultController;
 use App\Http\Controllers\Student\AdmissionController;
 use App\Http\Controllers\Student\LectureSheetController;
+use App\Http\Controllers\Student\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,10 @@ Route::prefix('students')->name('students.')->middleware('auth')->group(function
     Route::get('/results', [ResultController::class, 'index'])->name('results.index');
     Route::get('/results/{result:result_code}', [ResultController::class, 'resultSummary'])->name('results.summary');
     Route::get('/results/{result:result_code}/details', [ResultController::class, 'detailsResult'])->name('results.details');
+
+    // profiles
+    Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile.show');
+    Route::put('/password/update', [ProfileController::class, 'updatePassword'])->name('password.update');
 });
 
 require __DIR__.'/auth.php';

@@ -53,23 +53,6 @@
                         email: this.userInfo.email,
                         displayName: this.userInfo.name,
                     },
-                    configOverwrite: {
-                        // prejoinPageEnabled: false,
-                    },
-                    interfaceConfigOverwrite: {
-                        SHOW_JITSI_WATERMARK: false,
-                        JITSI_WATERMARK_LINK: 'https://hijbu.com',
-                        SHOW_WATERMARK_FOR_GUESTS: false,
-                        SHOW_CHROME_EXTENSION_BANNER: true,
-                        SETTINGS_SECTIONS: [ 'devices', 'language', 'moderator', 'profile' ],
-                        TOOLBAR_BUTTONS: [
-                            'microphone', 'camera', 'closedcaptions', 'desktop', 'fullscreen',
-                            'fodeviceselection', 'profile', 'chat', 'recording',
-                            'livestreaming', 'etherpad', 'settings', 'raisehand',
-                            'videoquality', 'filmstrip', 'stats',
-                            'tileview', 'download', 'mute-everyone', 'security'
-                        ],
-                    },
                     onload: this.onIFrameLoad
                 };
             },
